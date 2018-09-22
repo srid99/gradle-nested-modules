@@ -1,6 +1,5 @@
 # IntelliJ
-.idea/**/*.*
-*.iml
+.idea/**
 out/
 
 # mpeltonen/sbt-idea plugin
