@@ -11,10 +11,16 @@ import static org.junit.Assert.assertThat;
 public class ApplicationTwoTest {
     @Test
     public void run() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(baos));
-        ApplicationTwo.main(new String[]{});
+        PrintStream actualPrintStream = System.out;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outputStream));
 
-        assertThat(baos.toString(), is("ApplicationTwo is using SchemaTwo\n"));
+        try {
+            ApplicationTwo.main(new String[]{});
+        } finally {
+            System.setOut(actualPrintStream);
+        }
+
+        assertThat(outputStream.toString(), is("ApplicationTwo is using SchemaTwo\n"));
     }
 }
