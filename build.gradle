@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: "jacoco"
 
     def isApp = project.buildFile.path.contains("/apps/$project.name")
     if (isApp) {
@@ -26,5 +27,13 @@ subprojects {
 
     artifacts {
         testRuntime testJar
+    }
+
+    test {
+        jacoco {
+            destinationFile = file("$rootDir/build/jacoco/jacoco.exec")
+        }
+
+        finalizedBy jacocoTestReport
     }
 }

@@ -18,5 +18,7 @@ It also demonstrates the following,
 * Have more than 1 app and shared libraries under one repo (for whatever good reason you need that)
 * Apply plugin for selected modules from root
 * Shared test utilities as dependency
+* Code coverage using JaCoCo
+* Gather code coverage and generate report (by default it does per module)
 
 **Note:** These demonstrations are for experimental purpose and opinionated.
