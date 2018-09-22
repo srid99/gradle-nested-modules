@@ -1,0 +1,8 @@
+rootProject.name = 'gradle-nested-modules'
+
+include 'schema:shared'
+include 'schema:schema1'
+include 'schema:schema2'
+include 'core'
+include 'apps:app1'
+include 'apps:app2'

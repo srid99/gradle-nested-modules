@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':schema:schema1')
+    compile project(':schema:schema2')
+}

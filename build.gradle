@@ -1,0 +1,21 @@
+group 'in.srid'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    apply plugin: 'java'
+
+    def isApp = project.buildFile.path.contains("/apps/$project.name")
+    if (isApp) {
+        apply plugin: 'application'
+    }
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+}

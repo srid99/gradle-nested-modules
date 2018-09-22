@@ -1,0 +1,5 @@
+mainClassName = 'in.srid.ApplicationTwo'
+
+dependencies {
+    compile project(':core')
+}
