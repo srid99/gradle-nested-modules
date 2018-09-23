@@ -3,13 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'base'
 
-def rootBuildDir = "$rootDir/build"
-
 defaultTasks 'clean', 'build', 'jacocoTestReport'
-
-clean.doFirst {
-    delete rootBuildDir
-}
 
 subprojects {
     apply plugin: 'java'
@@ -41,7 +35,7 @@ subprojects {
 
     test {
         jacoco {
-            destinationFile = file("$rootBuildDir/jacoco/jacoco.exec")
+            destinationFile = file("${rootProject.buildDir}/jacoco/jacoco.exec")
         }
     }
 }
