@@ -1,6 +1,16 @@
 group 'in.srid'
 version '1.0-SNAPSHOT'
 
+apply plugin: 'base'
+
+def rootBuildDir = "$rootDir/build"
+
+defaultTasks 'clean', 'build', 'jacocoTestReport'
+
+clean.doFirst {
+    delete rootBuildDir
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: "jacoco"
@@ -31,9 +41,7 @@ subprojects {
 
     test {
         jacoco {
-            destinationFile = file("$rootDir/build/jacoco/jacoco.exec")
+            destinationFile = file("$rootBuildDir/jacoco/jacoco.exec")
         }
-
-        finalizedBy jacocoTestReport
     }
 }
