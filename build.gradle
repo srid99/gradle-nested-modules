@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'base'
 
-defaultTasks 'clean', 'build', 'jacocoTestReport'
+defaultTasks 'clean', 'build', 'aggregateTestReport', 'jacocoTestReport'
 
 subprojects {
     apply plugin: 'java'
@@ -34,8 +34,15 @@ subprojects {
     }
 
     test {
+        reports.html.enabled = false
+
         jacoco {
             destinationFile = file("${rootProject.buildDir}/jacoco/jacoco.exec")
         }
     }
+}
+
+task aggregateTestReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests/test")
+    reportOn subprojects*.test
 }
